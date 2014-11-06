@@ -5,7 +5,7 @@ def main():
     if len(sys.argv) < 2:
         print("Please supply a playlist in .m3u8 format.")
     elif len(sys.argv) >= 3:
-        print ("Please supply only one argument, given: " + str(len(sys.argv)))
+        print ("Please supply only one argument, given: " + str(len(sys.argv) - 1))
     else:
         filename = sys.argv[1]
         new_file_name = os.path.splitext(filename)[0] + ".wpl"
