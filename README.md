@@ -17,6 +17,6 @@ have Python 3 installed, and use playlistconverter2.py if you use Python 2. Put
 the .m3u8 you want to convert to .wpl in the same folder as playlistconverter.py
 and run:
 
-python playlistconverter.py <yourfilename>
+python playlistconverter.py yourfile.m3u8
 
 You should get a valid .wpl file. Send me a message if it doesn't work with WMP.
