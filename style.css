@@ -1,0 +1,12 @@
+/* Kiku's Playlist Converter CSS */
+
+html {
+margin-left: 15px;
+}
+
+div {
+max-width: 540px;
+border-bottom: 1px solid #e5e5e5;
+margin-bottom: 9px;
+padding-bottom: 10px;
+}

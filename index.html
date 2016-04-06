@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Playlist Converter</title>
+  </head>
+  <body>
+  <h1>Playlist Converter</h1>
+  <div>Select a .m3u8 file:</div>
+  <input type="file" id="fileInput"/>
+  <input type="text" id="playlistTitleInput" name="title" placeholder="Enter playlist title">
+  <input type="button" value="Convert!" class="btn btn-primary" onclick="convert()">
+  <pre id="fileDisplayArea"></pre>
+  
+  <script src="convert.js"></script>
+
+
+  </body>
+</html>

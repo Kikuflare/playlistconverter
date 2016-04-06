@@ -1,5 +1,6 @@
 import tkinter
 import random
+import traceback
 from tkinter import ttk, Frame, messagebox, filedialog, StringVar
 import os
 
@@ -36,7 +37,8 @@ class PlaylistConverter(object):
             self.status_text.set("Ready.")
 
     def convert(self):
-        old_name = os.path.basename(self.filename.get())
+        old_path = self.filename.get()
+        old_name = os.path.basename(old_path)
         if old_name == "":
             print("Invalid filename.")
             tkinter.messagebox.showinfo("Error","Invalid filename.")
@@ -46,21 +48,24 @@ class PlaylistConverter(object):
         
         else:
             new_file_name = os.path.splitext(old_name)[0] + ".wpl"
+            new_file_path = os.path.dirname(old_path) + "/" + new_file_name
             
-            if (os.path.exists(new_file_name)):
+            if (os.path.exists(new_file_path)):
                 if (tkinter.messagebox.askyesno("Convert", "File already exists, replace?")):
-                    self._convert(old_name)
+                    self._convert(old_path)
             
             else:
-                self._convert(old_name)
+                self._convert(old_path)
 
-    def _convert(self, old_name):
+    def _convert(self, old_path):
         try:
+            old_name = os.path.basename(old_path)
             new_file_name = os.path.splitext(old_name)[0] + ".wpl"
+            new_file_path = os.path.dirname(old_path) + "/" + new_file_name
             with open(self.filename.get(), 'r', encoding='utf-8-sig') as f:
                 lines = f.readlines()
                 
-                with open(new_file_name, 'w', encoding='utf-8-sig') as new_file:
+                with open(new_file_path, 'w', encoding='utf-8-sig') as new_file:
                     new_file.write('<?wpl version="1.0"?>\n')
                     new_file.write('<smil>\n')
                     new_file.write('\t<head>\n')
@@ -89,7 +94,8 @@ class PlaylistConverter(object):
             self.status_text.set("Finished converting.")
 
         except:
-            self.status_text.set("Error: File not found.")
+            #self.status_text.set("Error: File not found.")
+            print(traceback.format_exc())
             
 if __name__ == '__main__':
     playlistconverter = PlaylistConverter()
